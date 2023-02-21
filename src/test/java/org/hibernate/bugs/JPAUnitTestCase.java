@@ -52,7 +52,7 @@ public class JPAUnitTestCase {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Parent> query = criteriaBuilder.createQuery(Parent.class);
 		Root<?> root = query.from(Parent.class);
-		root.join("grandParent", JoinType.LEFT).alias("g");
+		root.join("grandParent", JoinType.LEFT);
 		query.where(criteriaBuilder.isNull(root.get("grandParent")));
 		query.select(query.from(Parent.class));
 		// expect the 3 Child entities to be returned but get none
